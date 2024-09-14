@@ -6,20 +6,27 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Cart from './pages/Cart';
 import Search from './pages/Search';
-
+import { store } from './redux/store';
+import LayoutPageMaster from './pageMaster/LayoutPageMaster';
+import {Provider} from 'react-redux'
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePages />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="search" element={<Search />} />
-        <Route path="detail/:prodId" element={<Detail />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+         <BrowserRouter>
+              <Routes>
+                <Route path='' element={<LayoutPageMaster></LayoutPageMaster>}>
+                  <Route path="/" element={<HomePages></HomePages>}></Route>
+                  <Route path="login" element={<Login />}  ></Route>
+                  <Route path="register" element={<Register ></Register>}> </Route>
+                  <Route path="profile" element={<Profile></Profile>}></Route>
+                  <Route path="cart" element={<Cart></Cart>}></Route>
+                  <Route path="search" element={<Search></Search>}></Route>
+                  <Route path="detail/:prodId" element={<Detail></Detail>} ></Route>     
+                </Route>
+              </Routes>
+          </BrowserRouter>
+    </Provider>
+   
   );
 };
 
