@@ -1,0 +1,19 @@
+.product-showcase {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-showcase img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-showcase h1 {
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.product-showcase button {
+    padding: 10px 20px;
+    font-size: 16px;
+}

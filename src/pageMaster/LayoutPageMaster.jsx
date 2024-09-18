@@ -1,21 +1,20 @@
-import React from 'react'
-import Register from '../pages/Register'
-import HeaderMenu from '../components/HeaderMenu'
-import Footer from '../components/Footer'
+import React from 'react';
+import HeaderMenu from '../components/HeaderMenu';
+import Footer from '../components/Footer';
+import { Outlet } from 'react-router-dom';
 
 const LayoutPageMaster = () => {
   return (
-    <div>
-        <HeaderMenu></HeaderMenu>
-
-        <div style={{minHeight:650}} className='content'>
-            {/* <Outlet></Outlet> */}
-            <Register></Register>
+    <>
+      <HeaderMenu />
+      <main className="container">
+        <div style={{ minHeight: '650px' }}>
+          <Outlet />
         </div>
-        
-        <Footer></Footer>
-    </div>
-  )
-}
+      </main>
+      <Footer />
+    </>
+  );
+};
 
-export default LayoutPageMaster
+export default LayoutPageMaster;

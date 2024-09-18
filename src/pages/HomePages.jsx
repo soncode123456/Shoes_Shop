@@ -1,20 +1,26 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import ProductFeature from '../components/ProductFeature';
 
-const HomePage = () => (
-  <div>
-    <Header />
-    <main>
-      <section className="hero">
-        <div>Product name</div>
-        <button>Buy now</button>
-      </section>
-      <ProductFeature />
-    </main>
-    <Footer />
-  </div>
-);
+const HomePages = () => {
+  return (
+    <div className="container">
+      <div className="row product-showcase mt-5 justify-content-center align-items-center">
+        <div className='col-6'>
+          <img
+            src="https://shop.cyberlearn.vn/images/adidas-prophere.png"
+            alt="Product Name"
+            style={{ width: '500px', height: 'auto' }}
+          />
+        </div>
+        <div className='col-6'>
+          <h1 className="mt-3">Product Name</h1>
+          <button className="btn btn-primary mt-2">Buy Now</button>
+        </div>
+      </div>
 
-export default HomePage;
+      <ProductFeature />
+    </div>
+  );
+};
+
+export default HomePages;

@@ -1,28 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const response = await axios.get('https://shop.cyberlearn.vn/api/Product');
-    return response.data.content;
+    const response = await fetch('https://shop.cyberlearn.vn/api/Product');
+    const data = await response.json();
+    return data.content || []; // Trả về danh sách sản phẩm
 });
 
 const productSlice = createSlice({
     name: 'products',
     initialState: {
         items: [],
-        status: null,
+        status: 'idle',
+        error: null,
     },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.items = action.payload;
                 state.status = 'succeeded';
+                state.items = action.payload; // Lưu danh sách sản phẩm vào state
             })
-            .addCase(fetchProducts.rejected, (state) => {
+            .addCase(fetchProducts.rejected, (state, action) => {
                 state.status = 'failed';
+                state.error = action.error.message;
             });
     },
 });
