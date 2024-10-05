@@ -6,5 +6,6 @@ export const store = configureStore({
   reducer: {
     products: productReducer, // Đăng ký productReducer
     cart: cartReducer, // Thêm reducer vào store
+   
   },
 });
